@@ -1,0 +1,4 @@
+rootProject.name='baseProject'
+include ':app'
+include ':dome_a'
+include ':dome_b'
