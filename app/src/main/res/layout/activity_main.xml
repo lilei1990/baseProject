@@ -1,24 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".MainActivity">
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="我是主app"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/bt"
+    <!-- 定义该布局需要绑定的数据名称和类型 name可以理解key type可以理解为value -->
+    <data>
+        <variable
+            name="loginViewModel"
+            type="com.example.lilei.LoginViewModel" />
+    </data>
+    <!-- 下部分内容和平时布局文件一样 -->
+    <LinearLayout
         android:layout_width="match_parent"
-        android:text="跳转到A"
-        android:layout_height="wrap_content" />
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <!--在loginViewModel中实现账号名改变的监听-->
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            android:hint="请输入账户"
+            android:text="@={loginViewModel.userInfo.name}" />
+        <!--在loginViewModel中实现密码改变的监听-->
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            android:hint="请输入密码"
+            android:text="@={loginViewModel.userInfo.pwd}" />
+        <!--在loginViewModel中实现点击登录的监听-->
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:onClick="@{loginViewModel.loginClickListener}"
+            android:text="登录" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <TextView
+            android:layout_width="match_parent"
+            android:text="@{loginViewModel.userInfo.name}"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+</layout>
