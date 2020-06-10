@@ -1,4 +1,4 @@
-apply from: rootProject.file('cc-settings-2.gradle')
+apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 

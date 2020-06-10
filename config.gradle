@@ -1,13 +1,5 @@
 ext {
-    android = [
-            compileSdkVersion: 29,
-            buildToolsVersion: "29.0.3",
-            applicationId    : "com.gxsd.xingtaiparty",
-            minSdkVersion    : 20,
-            targetSdkVersion : 27,
-            versionCode      : 83,
-            versionName      : "1.0.83"
-    ]
+
 
     dependencies = [
             //*********************官方依赖***********************//
@@ -27,6 +19,8 @@ ext {
 
             //Android util,
             "blankj_utilcode"           : "com.blankj:utilcode:1.13.10",
+            //arouter
+            "arouter-api"               : 'com.alibaba:arouter-api:1.5.0',
 
 
     ]
@@ -34,13 +28,15 @@ ext {
             "butterknife-compiler": "com.jakewharton:butterknife-compiler:8.8.1",
             "glide:compiler:4.5.0": "com.github.bumptech.glide:compiler:4.5.0",
             "glide:compiler:4.8.0": "com.github.bumptech.glide:compiler:4.8.0",
+            //arouter
+            "arouter-compiler"    : 'com.alibaba:arouter-compiler:1.0.6'
     ]
 
     androidConfig = [
-            appName          : 'Util',
+            appName          : 'lilei',
             compileSdkVersion: 29,
             buildToolsVersion: "29.0.3",
-            applicationId    : "com.gxsd.xingtaiparty",
+            applicationId    : "com.lilei.on_the_way",
             minSdkVersion    : 20,
             targetSdkVersion : 27,
             versionCode      : 1_018_001,
@@ -83,9 +79,15 @@ ext {
 
     configAndroidDomain = this.&configAndroidDomain
     configAppDependencies = this.&configAppDependencies
+    configApply = this.&configApply
 
 }
-
+//application插件
+def configApply(Project pro) {
+    pro.apply plugin: 'com.android.application'
+    pro.apply plugin: 'kotlin-android'
+    pro.apply plugin: 'kotlin-android-extensions'
+}
 def configAndroidDomain(Project pro) {
     if (pro.plugins.hasPlugin("com.android.application")) {
         configAppAndroidDomain(pro)
@@ -123,6 +125,11 @@ def configAppAndroidDomain(Project pro) {
             versionCode androidConfig.versionCode
             versionName androidConfig.versionName
             multiDexEnabled true
+            javaCompileOptions {
+                annotationProcessorOptions {
+                    arguments = [AROUTER_MODULE_NAME: project.getName()]
+                }
+            }
         }
 
         buildTypes {
