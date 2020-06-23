@@ -1,5 +1,6 @@
 package com.example.on_the_way
 
+import android.app.ActivityManager
 import android.os.Bundle
 import androidx.databinding.ViewDataBinding
 import com.amap.api.maps.AMap
@@ -12,7 +13,6 @@ import kotlinx.android.synthetic.main.activity_on_the_way_main.*
 class OnTheWayMainActivity : BaseActivity() {
     private var aMap: AMap? = null
     override fun initData() {
-
 
 
     }
