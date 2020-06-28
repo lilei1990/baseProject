@@ -19,7 +19,7 @@ import com.blankj.utilcode.util.Utils;
  * 描述 :
  */
 
-public abstract class CoreActivity extends AppCompatActivity implements IBaseView{
+public abstract class CoreActivity extends AppCompatActivity implements IBaseView, IBasePermissions {
     private ViewDataBinding viewDataBinding;//数据绑定
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {

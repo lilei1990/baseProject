@@ -18,7 +18,7 @@ import androidx.fragment.app.Fragment;
  *
  * @param <DB>
  */
-public abstract class BaseFragment<DB extends ViewDataBinding> extends Fragment {
+public abstract class CoreFragment<DB extends ViewDataBinding> extends Fragment {
 
     @Nullable
     @Override
