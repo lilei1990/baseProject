@@ -3,9 +3,10 @@ package com.example.on_the_way
 import android.animation.Animator
 import android.animation.AnimatorListenerAdapter
 import android.animation.ValueAnimator
+import android.os.Bundle
 import androidx.databinding.ViewDataBinding
 import com.blankj.utilcode.util.ActivityUtils
-import com.example.baselibrary.ui.BaseActivity
+import com.example.base_lib.BaseActivity
 import com.lilei.on_the_way.R
 
 class SplashActivity : BaseActivity() {
@@ -14,18 +15,18 @@ class SplashActivity : BaseActivity() {
      */
     private val DURATION: Long = 800
     private var mAnimator: ValueAnimator? = null
-    override fun initData() {
+
+
+    override fun init(savedInstanceState: Bundle?) {
+        // 没有需要重新授予权限,直接进入主页
+        initAnimator()
     }
 
     override fun getLayoutId(): Int {
        return R.layout.activity_splash
     }
 
-    override fun initView(view: ViewDataBinding?) {
 
-        // 没有需要重新授予权限,直接进入主页
-        initAnimator()
-    }
 
     private fun initAnimator() {
         mAnimator = ValueAnimator.ofFloat(0f, 80f)

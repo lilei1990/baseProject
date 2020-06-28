@@ -1,24 +1,17 @@
 package com.example.on_the_way
 
-import android.app.ActivityManager
 import android.os.Bundle
-import androidx.databinding.ViewDataBinding
+import android.view.View
 import com.amap.api.maps.AMap
 import com.amap.api.maps.model.MyLocationStyle
-import com.example.baselibrary.ui.BaseActivity
+import com.example.base_lib.BaseActivity
 import com.lilei.on_the_way.R
 import kotlinx.android.synthetic.main.activity_on_the_way_main.*
 
 
 class OnTheWayMainActivity : BaseActivity() {
     private var aMap: AMap? = null
-    override fun initData() {
-
-
-    }
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
+    override fun init(savedInstanceState: Bundle?) {
         aMap = mv_map.map
         mv_map.onCreate(savedInstanceState)
         var myLocationStyle =
@@ -34,6 +27,8 @@ class OnTheWayMainActivity : BaseActivity() {
         aMap?.setTrafficEnabled(true);// 显示实时交通状况
         //地图模式可选类型：MAP_TYPE_NORMAL,MAP_TYPE_SATELLITE,MAP_TYPE_NIGHT
         aMap?.setMapType(AMap.MAP_TYPE_SATELLITE);// 卫星地图模式
+//        mv_map.visibility=View.GONE
+
     }
 
     override fun getLayoutId(): Int {
@@ -41,8 +36,6 @@ class OnTheWayMainActivity : BaseActivity() {
         return R.layout.activity_on_the_way_main
     }
 
-    override fun initView(view: ViewDataBinding?) {
-    }
 
     override fun onResume() {
         super.onResume()
@@ -53,6 +46,8 @@ class OnTheWayMainActivity : BaseActivity() {
         super.onDestroy()
         mv_map.onDestroy();
     }
+
+
 
     override fun onPause() {
         super.onPause()

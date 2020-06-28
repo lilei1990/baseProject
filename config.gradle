@@ -18,7 +18,10 @@ ext {
             "utilcode"                  : "com.blankj:utilcode:1.19.0",
 
             //Android util,
-            "blankj_utilcode"           : "com.blankj:utilcode:1.13.10",
+            "blankj_utilcode"           : "com.blankj:utilcode:1.29.0",
+            // if u use AndroidX, use the following
+            "blankj_utilcodex"          : "com.blankj:utilcodex:1.29.0",
+
             //arouter
             "arouter-api"               : 'com.alibaba:arouter-api:1.5.0',
 
@@ -88,6 +91,7 @@ def configApply(Project pro) {
     pro.apply plugin: 'kotlin-android'
     pro.apply plugin: 'kotlin-android-extensions'
 }
+
 def configAndroidDomain(Project pro) {
     if (pro.plugins.hasPlugin("com.android.application")) {
         configAppAndroidDomain(pro)
@@ -138,17 +142,35 @@ def configAppAndroidDomain(Project pro) {
                 proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             }
         }
-
-        sourceSets {
-            main.res.srcDirs += 'src/main/res_core'
-            main.res.srcDirs += 'src/main/res_sub'
-        }
+        //配置资源路径
+        configSourceSets(pro.android)
 
         lintOptions {
             abortOnError false
         }
         dataBinding {
             enabled = true
+        }
+    }
+}
+/**
+ * 配置资源路径
+ * @param android
+ * @return
+ */
+def configSourceSets(android) {
+    android.sourceSets {
+        main {
+            res.srcDirs = [
+                    'src/main/res',
+                    'src/main/res/layout',
+                    'src/main/res/layout/view',
+                    'src/main/res/layout/adapter',
+                    'src/main/res/layout/include',
+                    'src/main/res/layout/other'
+            ]
+            jniLibs.srcDirs = ['libs']
+
         }
     }
 }
@@ -193,7 +215,7 @@ def configLibAndroidDomain(Project pro) {
                 proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             }
         }
-
+        configSourceSets(pro.android)
         lintOptions {
             abortOnError false
         }

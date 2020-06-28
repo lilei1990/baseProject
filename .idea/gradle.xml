@@ -13,8 +13,10 @@
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/app_on_the_way" />
             <option value="$PROJECT_DIR$/base_core" />
+            <option value="$PROJECT_DIR$/base_lib" />
             <option value="$PROJECT_DIR$/dome_a" />
             <option value="$PROJECT_DIR$/dome_b" />
+            <option value="$PROJECT_DIR$/plib" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />

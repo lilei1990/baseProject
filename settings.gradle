@@ -1,6 +1,8 @@
+include ':base_lib'
 rootProject.name='baseProject'
 include ':app'
 include ':dome_a'
 include ':dome_b'
 include ':base_core'
 include ':app_on_the_way'
+include ':plib'
