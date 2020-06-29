@@ -16,4 +16,6 @@ dependencies {
     implementation 'com.dylanc:loadinghelper:2.1.0'
     //网络请求框架
     api 'com.lzy.net:okgo:3.0.4'
+    //屏幕适配头条方案
+    api 'me.jessyan:autosize:1.2.1'
 }
