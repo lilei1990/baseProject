@@ -5,7 +5,7 @@ configAndroidDomain project
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation project(':base_core')
+    api  project(':base_core')
     api "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     api rootProject.ext.dependencies["appcompat:1.1.0"]
     api rootProject.ext.dependencies["core-ktx:1.2.0"]

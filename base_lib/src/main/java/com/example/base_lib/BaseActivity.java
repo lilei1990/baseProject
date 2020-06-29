@@ -35,7 +35,7 @@ public abstract class BaseActivity extends CoreActivity {
 //        loadingHelper.register(ViewType.LOADING, new LoadingAdapter());
         loadingHelper.register(ViewType.TITLE, getTitleAdapter());
         loadingHelper.setDecorHeader(ViewType.TITLE);
-        loadingHelper.showLoadingView();
+//        loadingHelper.showLoadingView();
     }
 
     /**
